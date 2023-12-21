@@ -18,6 +18,25 @@
         $(window).resize(toggleNavbarMethod);
     });
     
+// filter option
+document.getElementById('search-input').addEventListener('keyup', function() {
+    let filter = this.value.toUpperCase();
+    let itemList = document.getElementById('item-list');
+    let items = itemList.getElementsByClassName('item');
+
+    for (let i = 0; i < items.length; i++) {
+        let item = items[i];
+        let itemText = item.textContent || item.innerText;
+
+        if (itemText.toUpperCase().indexOf(filter) > -1) {
+            item.style.display = '';
+        } else {
+            item.style.display = 'none';
+        }
+    }
+});
+
+
     
     // Back to top button
     $(window).scroll(function () {
@@ -100,5 +119,5 @@
         button.parent().parent().find('input').val(newVal);
     });
     
-})(jQuery);
-
+})
+(jQuery);
